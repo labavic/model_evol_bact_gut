@@ -21,7 +21,7 @@ module glob
 			implicit none
 			
 			real(8), allocatable			:: F(:), B(:), Ft(:), Bt(:)
-			integer							:: it, ix, i, j
+			integer					:: it, ix, i, j
 			
 				
 			! allocating dimensions of concentration arrays 
@@ -102,8 +102,8 @@ module glob
 		
 			implicit none
 			real(8), allocatable	:: F(:), B(:), Ft(:), Bt(:), M(:), Mt(:), B0(:), F0(:)
-			real(8)					:: M0
-			integer					:: it, ix, i, P, fln, j
+			real(8)			:: M0
+			integer			:: it, ix, i, P, fln, j
 			
 			
 			
@@ -120,7 +120,7 @@ module glob
 						
 				
 			open(unit=1, file=trim(path)//'/FinalSS.dat',  form='formatted', status='old')
-            do i = 0, lI
+            		do i = 0, lI
 				read(1, *) B0(i), F0(i)
 			end do
 			close(1)
@@ -214,10 +214,10 @@ module glob
 		
 		subroutine var_char(var, ch_var)
 		
-			real(8), intent(in)				:: var
+			real(8), intent(in)		:: var
 			character(len=10), intent(out)	:: ch_var
-			character						:: ch_num*2, ft*10
-			integer							:: i
+			character			:: ch_num*2, ft*10
+			integer				:: i
 			
 			
 			if (var < 1.d0) then
@@ -259,7 +259,7 @@ program main
 	! define type
 	
 	type vars
-		real(8)				:: vlu
+		real(8)			:: vlu
 		character(len = 5)	:: nme
 	end type
 	
@@ -280,8 +280,8 @@ program main
 	rm		= 0.42				! 1/h
 	dx	 	= 0.01				! cm
 	dt		= dx**2*0.5/d*0.8	! h
-	time	= 1.0				! h 
-	length	= 6.0				! cm
+	time		= 1.0				! h 
+	length		= 6.0				! cm
 	Fc		= 1.0
 	Fin		= Fc/v				! mM
 	
@@ -316,13 +316,13 @@ program main
 	100 continue
 	
 	d 		= var(1)%vlu	; v 		= var(2)%vlu		
-	a		= var(3)%vlu	; k			= var(4)%vlu			
+	a		= var(3)%vlu	; k		= var(4)%vlu			
 	r		= var(5)%vlu	; rm		= var(6)%vlu
 	Fin		= var(7)%vlu	; dx	 	= var(8)%vlu	
 	dt		= var(9)%vlu	; time		= var(10)%vlu	
-	length	= var(11)%vlu	; wt		= var(12)%vlu
+	length	= var(11)%vlu	        ; wt		= var(12)%vlu
 	P		= floor(var(13)%vlu); miR	= var(14)%vlu
-	Fc		= var(15)%vlu	;M0			= var(16)%vlu
+	Fc		= var(15)%vlu	;M0		= var(16)%vlu
 	
 	mi = Ceiling(miR)
 	
@@ -354,13 +354,14 @@ program main
 		goto 500
 	end if
 	
-	path = '/media/darka/data/Data/'//trim(Ch_mi)//&
-					&'/k_'//trim(adjustl(chk))//&
-					&'/r_'//trim(adjustl(chr))//&
-					&'/F_'//trim(adjustl(chf))//&
-					&'/L_'//trim(adjustl(chL))//&
-					&'/D_'//trim(adjustl(chD))//&
-					&'/v_'//trim(adjustl(chV))
+	path = '/media/darka/data/Data/'&
+			&//trim(Ch_mi)//&
+			&'/k_'//trim(adjustl(chk))//&
+			&'/r_'//trim(adjustl(chr))//&
+			&'/F_'//trim(adjustl(chf))//&
+			&'/L_'//trim(adjustl(chL))//&
+			&'/D_'//trim(adjustl(chD))//&
+			&'/v_'//trim(adjustl(chV))
 
 	call system('mkdir -p '//path)
 	
@@ -381,7 +382,7 @@ program main
 	write(2, *) 'time step   [h]               ', dt
 	write(2, *) 'length      [cm]              ', length
 	write(2, *) 'integration time   [h]        ', time
-	write(2, *) 'initial mutant amount 		   ', M0
+	write(2, *) 'initial mutant amount         ', M0
 	close(2)
 
 	
@@ -389,7 +390,7 @@ program main
 	
 	
 	tI  = min(abs(ceiling(time/dt)),2147483647)	! number of time iteration steps
-	lI  = ceiling(length/dx)					! number of points on a 1D spatial grid
+	lI  = ceiling(length/dx)			! number of points on a 1D spatial grid
 		
 	
 	
