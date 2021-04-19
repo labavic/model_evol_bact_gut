@@ -72,7 +72,7 @@ module glob
 			
 			! write the final state to save it for initial conditions for adding mutant later
 	
-			open(unit=1, file=trim(path)//'/FinalSS.dat', form='formatted', status='unknown')
+			open(unit=1, file=trim(path)//'/Final_Stat.dat', form='formatted', status='unknown')
 			do i = 0, lI
 				write(1, *) B(i), F(i)
 			end do
