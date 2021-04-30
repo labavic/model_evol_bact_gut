@@ -1,4 +1,4 @@
-This code contains a Fortran 90 implementation of the code described in "Modeling evolution of bacteria in the gut", by Darka Labavic, Claude Loverdo, and Anne-Florence Bitbol.
+This code contains a Fortran 90 implementation of the code described in "Hydrodynamic flow and concentration gradients in the gut enhance neutral bacterial diversity", by Darka Labavic, Claude Loverdo, and Anne-Florence Bitbol.
 
 Archived version:
 
